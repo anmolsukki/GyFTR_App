@@ -28,7 +28,7 @@ const BottomTabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.iconContainer}>
-              <Icon name="home" color={focused ? '#FFA500' : '#A9A9A9'} size={30} />
+              <Icon name="home" color={focused ? '#FFA500' : '#A9A9A9'} size={25} />
               <Text>Home</Text>
             </View>
           ),
@@ -40,7 +40,7 @@ const BottomTabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.iconContainer}>
-              <Icon name="person" color={focused ? '#FFA500' : '#A9A9A9'} size={30} />
+              <Icon name="person" color={focused ? '#FFA500' : '#A9A9A9'} size={25} />
               <Text>Profile</Text>
             </View>
           ),
@@ -54,7 +54,7 @@ const BottomTabNavigator = () => {
             <Image
               source={require('../Assets/Icons/discount.png')}
               resizeMode="contain"
-              style={{ width: 40, height: 40, tintColor: focused ? '#FFA500' : '#A9A9A9' }}
+              style={{ width: 35, height: 35, tintColor: focused ? '#FFA500' : '#A9A9A9' }}
             />
           ),
           tabBarButton: (props) => <CustomTabBarButton {...props} />,
@@ -66,7 +66,7 @@ const BottomTabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.iconContainer}>
-              <Icon name="call" color={focused ? '#FFA500' : '#A9A9A9'} size={30} />
+              <Icon name="call" color={focused ? '#FFA500' : '#A9A9A9'} size={25} />
               <Text>Contact</Text>
             </View>
           ),
@@ -78,7 +78,7 @@ const BottomTabNavigator = () => {
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.iconContainer}>
-              <Icon name="cart" color={focused ? '#FFA500' : '#A9A9A9'} size={30} />
+              <Icon name="cart" color={focused ? '#FFA500' : '#A9A9A9'} size={25} />
               <Text>Cart</Text>
             </View>
           ),
@@ -111,8 +111,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   customTabBarView: {
-    width: 70,
-    height: 70,
+    width: 60,
+    height: 60,
     borderRadius: 35,
     backgroundColor: '#dedddd',
   },

@@ -24,6 +24,7 @@ const MainStackScreen = ({ navigation }) => (
           <Icon
             style={{ paddingLeft: 10 }}
             name="menu"
+            color="#fff"
             size={30}
             backgroundColor="#009387"
             onPress={() => {

@@ -20,14 +20,16 @@ const DrawerContent = (props) => {
           </View>
           <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
-              icon={({ color, size }) => <Icon name="home-outline" color={color} size={size} />}
+              labelStyle={{ fontSize: 17, color: '#A9A9A9', fontWeight: '600' }}
+              icon={() => <Icon name="home" color={'#A9A9A9'} size={30} />}
               label="Home"
               onPress={() => {
                 props.navigation.navigate('Home');
               }}
             />
             <DrawerItem
-              icon={({ color, size }) => <Icon name="account-outline" color={color} size={size} />}
+              labelStyle={{ fontSize: 17, color: '#A9A9A9', fontWeight: '600' }}
+              icon={() => <Icon name="account-outline" color={'#A9A9A9'} size={30} />}
               label="Profile"
               onPress={() => {
                 props.navigation.navigate('Profile');
@@ -37,7 +39,11 @@ const DrawerContent = (props) => {
         </View>
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDrawerSection}>
-        <DrawerItem label="Sign Out" icon={(color, size) => <Icon name="exit-to-app" color={color} size={size} />} />
+        <DrawerItem
+          label="Sign Out"
+          labelStyle={{ fontSize: 17, color: '#A9A9A9', fontWeight: '600' }}
+          icon={() => <Icon name="exit-to-app" color={'#A9A9A9'} size={30} />}
+        />
       </Drawer.Section>
     </View>
   );
