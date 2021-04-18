@@ -1,12 +1,14 @@
 import React from 'react';
 import { StyleSheet, View, Text, Image, TouchableOpacity } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { connect } from 'react-redux';
 import Icon from 'react-native-vector-icons/Ionicons';
 import HomeScreen from '../Screen/HomeScreen';
 import ProfileScreen from '../Screen/ProfileScreen';
 import OfferScreen from '../Screen/OfferScreen';
 import ContactScreen from '../Screen/ContactScreen';
 import CartScreen from '../Screen/CartScreen';
+import * as actionCreator from '../Redux/Actions/Action/GlobalAction';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +18,7 @@ const CustomTabBarButton = ({ children, onPress }) => (
   </TouchableOpacity>
 );
 
-const BottomTabNavigator = () => {
+const BottomTabNavigator = (props) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -33,6 +35,11 @@ const BottomTabNavigator = () => {
             </View>
           ),
         }}
+        listeners={({ navigation }) => ({
+          tabPress: () => {
+            props.selectDrawerActions('Home');
+          },
+        })}
         component={HomeScreen}
       />
       <Tab.Screen
@@ -45,6 +52,11 @@ const BottomTabNavigator = () => {
             </View>
           ),
         }}
+        listeners={({ navigation }) => ({
+          tabPress: () => {
+            props.selectDrawerActions('Profile');
+          },
+        })}
         component={ProfileScreen}
       />
       <Tab.Screen
@@ -120,4 +132,14 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BottomTabNavigator;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectDrawerActions: (payload) => dispatch(actionCreator.selectDrawerActions(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(BottomTabNavigator);

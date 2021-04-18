@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import SideDrawer from './src/Config/SideDrawer';
+import { Provider } from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';
+import SideDrawer from './src/Config/SideDrawer';
+import store from './src/Redux/Store';
 import 'react-native-gesture-handler';
 
 const App = () => {
@@ -10,9 +12,11 @@ const App = () => {
   }, []);
 
   return (
-    <NavigationContainer>
-      <SideDrawer />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <SideDrawer />
+      </NavigationContainer>
+    </Provider>
   );
 };
 

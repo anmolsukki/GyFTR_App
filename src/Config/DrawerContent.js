@@ -1,8 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { View, StyleSheet } from 'react-native';
 import { DrawerContentScrollView, DrawerItem } from '@react-navigation/drawer';
 import { Avatar, Title, Caption, Drawer } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import * as actionCreator from '../Redux/Actions/Action/GlobalAction';
 
 const DrawerContent = (props) => {
   return (
@@ -20,19 +22,21 @@ const DrawerContent = (props) => {
           </View>
           <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
-              labelStyle={{ fontSize: 17, color: '#A9A9A9', fontWeight: '600' }}
-              icon={() => <Icon name="home" color={'#A9A9A9'} size={30} />}
+              labelStyle={{ fontSize: 17, color: props.drawerData === 'Home' ? '#FFA500' : '#A9A9A9', fontWeight: '600' }}
+              icon={() => <Icon name="home" color={props.drawerData === 'Home' ? '#FFA500' : '#A9A9A9'} size={30} />}
               label="Home"
               onPress={() => {
                 props.navigation.navigate('Home');
+                props.selectDrawerActions('Home');
               }}
             />
             <DrawerItem
-              labelStyle={{ fontSize: 17, color: '#A9A9A9', fontWeight: '600' }}
-              icon={() => <Icon name="account-outline" color={'#A9A9A9'} size={30} />}
+              labelStyle={{ fontSize: 17, color: props.drawerData === 'Profile' ? '#FFA500' : '#A9A9A9', fontWeight: '600' }}
+              icon={() => <Icon name="account-outline" color={props.drawerData === 'Profile' ? '#FFA500' : '#A9A9A9'} size={30} />}
               label="Profile"
               onPress={() => {
                 props.navigation.navigate('Profile');
+                props.selectDrawerActions('Profile');
               }}
             />
           </Drawer.Section>
@@ -69,4 +73,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default DrawerContent;
+const mapStateToProps = (state) => {
+  return {
+    drawerData: state.globalData.drawerStore,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectDrawerActions: (payload) => dispatch(actionCreator.selectDrawerActions(payload)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(DrawerContent);
