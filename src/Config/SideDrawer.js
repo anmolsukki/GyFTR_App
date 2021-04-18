@@ -1,4 +1,5 @@
 import React from 'react';
+import { View, Image } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -8,25 +9,28 @@ import DrawerContent from './DrawerContent';
 const Drawer = createDrawerNavigator();
 const MainStack = createStackNavigator();
 
+const gyftrHeader = () => (
+  <View style={{ flex: 1 }}>
+    <Image style={{ maxHeight: 55 }} source={require('../Assets/logo.png')} resizeMethod={'resize'} resizeMode={'contain'} />
+  </View>
+);
+
 const MainStackScreen = ({ navigation }) => (
   <MainStack.Navigator
-    screenOptions={{
-      headerStyle: { backgroundColor: '#009387' },
-      headerTintColor: '#fff',
-      headerTitleStyle: { fontWeight: 'bold', alignSelf: 'center' },
-    }}>
+    screenOptions={() => ({
+      headerTitleAlign: 'center',
+      headerTitle: () => gyftrHeader(),
+    })}>
     <MainStack.Screen
       name="Main"
       component={BottomTabNavigator}
       options={{
-        title: 'Home Screen',
         headerLeft: () => (
           <Icon
             style={{ paddingLeft: 10 }}
             name="menu"
-            color="#fff"
+            color="#000"
             size={30}
-            backgroundColor="#009387"
             onPress={() => {
               navigation.openDrawer();
             }}
