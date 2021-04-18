@@ -21,6 +21,10 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+# build
+package-lock.json
+yarn.lock
+
 # Android/IntelliJ
 #
 build/
