@@ -22,7 +22,7 @@ const MainStackScreen = ({ navigation }) => (
       headerTitle: () => gyftrHeader(),
     })}>
     <MainStack.Screen
-      name="Main"
+      name="MainPage"
       component={BottomTabNavigator}
       options={{
         headerLeft: () => (
