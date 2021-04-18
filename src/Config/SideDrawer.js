@@ -36,6 +36,17 @@ const MainStackScreen = ({ navigation }) => (
             }}
           />
         ),
+        headerRight: () => (
+          <Icon
+            style={{ paddingRight: 15 }}
+            name="search"
+            color="#000"
+            size={30}
+            onPress={() => {
+              navigation.openDrawer();
+            }}
+          />
+        ),
       }}
     />
   </MainStack.Navigator>

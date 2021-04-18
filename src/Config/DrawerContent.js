@@ -14,7 +14,7 @@ const DrawerContent = (props) => {
               <Avatar.Image source={require('../Assets/Icons/user.png')} size={50} />
               <View style={{ marginLeft: 15, flexDirection: 'column' }}>
                 <Title style={styles.userTitle}>Anmol Singh</Title>
-                <Caption style={styles.userCaption}>anmolsukki94@gmail.com</Caption>
+                <Caption style={styles.userCaption}>9878986993</Caption>
               </View>
             </View>
           </View>

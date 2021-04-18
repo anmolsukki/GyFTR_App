@@ -76,6 +76,8 @@ const BottomTabNavigator = () => {
       <Tab.Screen
         name="Cart"
         options={{
+          tabBarBadge: 3,
+          tabBarBadgeStyle: { backgroundColor: '#FFA500' },
           tabBarIcon: ({ focused }) => (
             <View style={styles.iconContainer}>
               <Icon name="cart" color={focused ? '#FFA500' : '#A9A9A9'} size={25} />
