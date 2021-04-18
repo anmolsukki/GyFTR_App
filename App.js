@@ -1,17 +1,46 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomePage from './src/Screen/HomePage';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/Ionicons';
+import BottomTabNavigator from './src/Config/BottomTabNavigator';
 import 'react-native-gesture-handler';
 
-const Stack = createStackNavigator();
+const Drawer = createDrawerNavigator();
+const HomeStack = createStackNavigator();
+
+const HomeStackScreen = ({ navigation }) => (
+  <HomeStack.Navigator>
+    <HomeStack.Screen
+      name="Main Screen"
+      options={{
+        gestureEnabled: true,
+        headerStyle: { backgroundColor: '#009387' },
+        headerTintColor: '#fff',
+        headerTitleStyle: { fontWeight: 'bold', alignSelf: 'center' },
+        headerLeft: () => (
+          <Icon
+            style={{ paddingLeft: 10 }}
+            name="menu"
+            size={30}
+            backgroundColor="#009387"
+            onPress={() => {
+              navigation.openDrawer();
+            }}
+          />
+        ),
+      }}
+      component={BottomTabNavigator}
+    />
+  </HomeStack.Navigator>
+);
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="HomePage" component={HomePage} />
-      </Stack.Navigator>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen name="Home" component={HomeStackScreen} />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
