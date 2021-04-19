@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import BottomTabNavigator from './BottomTabNavigator';
 import DrawerContent from './DrawerContent';
+import AllBrandScreen from '../Screen/AllBrandScreen';
 
 const Drawer = createDrawerNavigator();
 const MainStack = createStackNavigator();
@@ -24,6 +25,34 @@ const MainStackScreen = ({ navigation }) => (
     <MainStack.Screen
       name="MainPage"
       component={BottomTabNavigator}
+      options={{
+        headerLeft: () => (
+          <Icon
+            style={{ paddingLeft: 10 }}
+            name="menu"
+            color="#000"
+            size={30}
+            onPress={() => {
+              navigation.openDrawer();
+            }}
+          />
+        ),
+        headerRight: () => (
+          <Icon
+            style={{ paddingRight: 15 }}
+            name="search"
+            color="#000"
+            size={30}
+            onPress={() => {
+              navigation.openDrawer();
+            }}
+          />
+        ),
+      }}
+    />
+    <MainStack.Screen
+      name="AllBrands"
+      component={AllBrandScreen}
       options={{
         headerLeft: () => (
           <Icon

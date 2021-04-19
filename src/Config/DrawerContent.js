@@ -31,12 +31,12 @@ const DrawerContent = (props) => {
               }}
             />
             <DrawerItem
-              labelStyle={{ fontSize: 17, color: props.drawerData === 'Profile' ? '#FFA500' : '#A9A9A9', fontWeight: '600' }}
-              icon={() => <Icon name="account-outline" color={props.drawerData === 'Profile' ? '#FFA500' : '#A9A9A9'} size={30} />}
-              label="Profile"
+              labelStyle={{ fontSize: 17, color: props.drawerData === 'AllBrands' ? '#FFA500' : '#A9A9A9', fontWeight: '600' }}
+              icon={() => <Icon name="ballot" color={props.drawerData === 'AllBrands' ? '#FFA500' : '#A9A9A9'} size={30} />}
+              label="All Brands"
               onPress={() => {
-                props.navigation.navigate('Profile');
-                props.selectDrawerActions('Profile');
+                props.navigation.navigate('AllBrands');
+                props.selectDrawerActions('AllBrands');
               }}
             />
           </Drawer.Section>
