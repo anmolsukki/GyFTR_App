@@ -2,6 +2,7 @@ import * as actionConstant from '../../Actions/ActionConstant';
 
 const initialState = {
   drawerStore: 'Home',
+  persistStore: null,
 };
 
 export const GlobalReducer = (state = initialState, action) => {
@@ -10,6 +11,12 @@ export const GlobalReducer = (state = initialState, action) => {
       return {
         ...state,
         drawerStore: action.payload,
+      };
+
+    case actionConstant.PERSIST_SUCCESS:
+      return {
+        ...state,
+        persistStore: action.payload,
       };
     default:
   }

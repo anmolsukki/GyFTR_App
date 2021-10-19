@@ -1,6 +1,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import { persistReducer, persistStore } from 'redux-persist';
 import thunk from 'redux-thunk';
 import rootReducer from '../Reducers/rootReducer';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const logger = (store) => {
   return (next) => {
@@ -14,6 +16,13 @@ const logger = (store) => {
 };
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(logger, thunk)));
 
-export default store;
+const config = {
+  key: 'root',
+  storage: AsyncStorage,
+  debug: true,
+};
+
+export const store = createStore(persistReducer(config, rootReducer), composeEnhancers(applyMiddleware(logger, thunk)));
+
+export const persistor = persistStore(store);
