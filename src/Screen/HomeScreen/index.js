@@ -1,15 +1,27 @@
-import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, View, Text } from 'react-native';
+import { Button } from 'react-native-elements';
 import { connect } from 'react-redux';
+import HomePopup from '../../Components/HomePopup';
 import * as actionCreator from '../../Redux/Actions/Action/GlobalAction';
 
 const HomeScreen = (props) => {
+  const [state, setState] = useState({ isModalVisible: false });
+
+  const toggleModal = () => {
+    setState({ isModalVisible: !state.isModalVisible });
+  };
+
   return (
     <View>
       <Text>Home Screen</Text>
-      <TouchableOpacity onPress={() => props.presistActions('HomePage Persist')}>
-        <Text>Button</Text>
-      </TouchableOpacity>
+      <View style={{ paddingHorizontal: 20, paddingVertical: 5 }}>
+        <Button title={'Store Persist'} buttonStyle={styles.btnIdle} onPress={() => props.presistActions('HomePage Persist')} />
+      </View>
+      <View style={{ paddingHorizontal: 20, paddingVertical: 5 }}>
+        <Button title={'Submit'} buttonStyle={styles.btnIdle} onPress={toggleModal} />
+        <HomePopup isModalVisible={state.isModalVisible} toggleModal={toggleModal} />
+      </View>
     </View>
   );
 };
@@ -26,3 +38,12 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
+
+const styles = StyleSheet.create({
+  btnIdle: {
+    backgroundColor: '#007CA0',
+    padding: 15,
+    borderRadius: 5,
+    alignItems: 'center',
+  },
+});

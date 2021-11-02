@@ -21,6 +21,8 @@ const config = {
   key: 'root',
   storage: AsyncStorage,
   debug: true,
+  // blacklist: ['globalData'],
+  // whitelist: ['globalData'],
 };
 
 export const store = createStore(persistReducer(config, rootReducer), composeEnhancers(applyMiddleware(logger, thunk)));
